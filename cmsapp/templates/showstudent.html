@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block title %} Student Page {% endblock %}
+
+{% block content %} 
+<h1>Student Page </h1>
+
+<a href="{% url 'addstudent' %}">Add Student</a>
+<br><br>
+<table border="2">
+	{% for d in data %}
+		<tr>
+			<td>{{ d.rno }}</td>
+			<td>{{ d.name }}</td>
+			<td>{{ d.dept }}</td>
+			<td><a href="{% url 'deletestudent' id=d.rno %}" onclick = "return confirm('R u sure??')">Delete</a></td>
+		</tr>
+	{% empty %}
+		<tr>
+			<td>No Data Found</td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}
